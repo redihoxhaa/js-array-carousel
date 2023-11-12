@@ -47,7 +47,6 @@ itemsElement.append(shadowLayer);
 
 
 // Aggiunta event listener per scorrimento immagini
-
 nextChevron.addEventListener("click", function () {
     if (currentImage < itemsNode.length) {
         itemsNode[currentImage].classList.remove("active");
@@ -82,7 +81,6 @@ prevChevron.addEventListener("click", function () {
 });
 
 // Selezione immagine da thumb
-
 let thumbSelectorNode = document.querySelectorAll(".thumbnail");
 
 for (let i = 0; i < thumbSelectorNode.length; i++) {
@@ -99,5 +97,4 @@ for (let i = 0; i < thumbSelectorNode.length; i++) {
             }
         }
     })
-
 }
