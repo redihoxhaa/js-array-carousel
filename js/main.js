@@ -82,13 +82,20 @@ prevChevron.addEventListener("click", function () {
 
 // Selezione immagine da thumb
 
-let thumbSelector = document.querySelector(".blacked")
+let thumbSelectorNode = document.querySelectorAll(".thumbnail");
 
-thumbnailImageContainer.addEventListener("click", function () {
-    if (thumbnailImageContainer.classList.contains("blacked")) {
-        thumbnailImageContainer.classList.remove("blacked");
-    }
-});
+for (let i = 0; i < thumbSelectorNode.length; i++) {
+    thumbSelectorNode[i].addEventListener("click", function () {
+        thumbSelectorNode[i].classList.add("thumb-active");
+        thumbSelectorNode[i].classList.remove("blacked");
+        itemsNode[i].classList.add("active");
+        for (counter = 0; counter < thumbSelectorNode.length; counter++) {
+            if (counter != i) {
+                thumbSelectorNode[counter].classList.add("blacked");
+                itemsNode[i].classList.remove("active");
+            }
+        }
+    })
 
 
-
+}
