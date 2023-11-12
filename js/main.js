@@ -19,12 +19,6 @@ for (let i = 0; i < imageList.length; i++) {
     itemImageContainer.classList.add("item");
     thumbnailImageContainer.classList.add("thumbnail");
     thumbnailImageContainer.classList.add("blacked");
-    if (i === 0) {
-        itemImageContainer.classList.add("active");
-        thumbnailImageContainer.classList.add("thumb-active");
-        thumbnailImageContainer.classList.remove("blacked");
-
-    }
     imageElement = document.createElement("img");
     thumbnailElement = document.createElement("img");
     imageElement.src = `./img/${imageList[i]}`;
@@ -37,24 +31,32 @@ for (let i = 0; i < imageList.length; i++) {
     itemsThumbnails.append(thumbnailImageContainer);
 };
 
-// Creazione shadow layer
-const shadowLayer = document.createElement("div");
-shadowLayer.classList.add("shadow-layer");
-itemsElement.append(shadowLayer);
-itemsThumbnails.append(shadowLayer);
-
 // Dichiarazione NodeList items
 const itemsNode = document.querySelectorAll(".item");
 const thumbnailsNode = document.querySelectorAll(".thumbnail");
 
+itemsNode[0].classList.add("active");
+thumbnailsNode[0].classList.add("thumb-active");
+thumbnailsNode[0].classList.remove("blacked");
+
+
+// Creazione shadow layer
+const shadowLayer = document.createElement("div");
+shadowLayer.classList.add("shadow-layer");
+itemsElement.append(shadowLayer);
+
 // Aggiunta event listener per scorrimento immagini
 
 nextChevron.addEventListener("click", function () {
-    if (currentImage < itemsNode.length - 1) {
+    if (currentImage < itemsNode.length) {
         itemsNode[currentImage].classList.remove("active");
         thumbnailsNode[currentImage].classList.remove("thumb-active");
         thumbnailsNode[currentImage].classList.add("blacked");
         currentImage++;
+        // Funzione loop
+        if (currentImage === itemsNode.length) {
+            currentImage = 0;
+        }
         itemsNode[currentImage].classList.add("active");
         thumbnailsNode[currentImage].classList.add("thumb-active");
         thumbnailsNode[currentImage].classList.remove("blacked");
@@ -63,17 +65,30 @@ nextChevron.addEventListener("click", function () {
 
 
 prevChevron.addEventListener("click", function () {
-    if (currentImage > 0) {
+    if (currentImage >= 0) {
         itemsNode[currentImage].classList.remove("active");
         thumbnailsNode[currentImage].classList.remove("thumb-active");
         thumbnailsNode[currentImage].classList.add("blacked");
         currentImage--;
+        // Funzione loop
+        if (currentImage === -1) {
+            currentImage = itemsNode.length - 1;
+        }
         itemsNode[currentImage].classList.add("active");
         thumbnailsNode[currentImage].classList.add("thumb-active");
         thumbnailsNode[currentImage].classList.remove("blacked");
     }
 });
 
+// Selezione immagine da thumb
+
+let thumbSelector = document.querySelector(".blacked")
+
+thumbnailImageContainer.addEventListener("click", function () {
+    if (thumbnailImageContainer.classList.contains("blacked")) {
+        thumbnailImageContainer.classList.remove("blacked");
+    }
+});
 
 
 
