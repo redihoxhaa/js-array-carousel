@@ -45,6 +45,7 @@ const shadowLayer = document.createElement("div");
 shadowLayer.classList.add("shadow-layer");
 itemsElement.append(shadowLayer);
 
+
 // Aggiunta event listener per scorrimento immagini
 
 nextChevron.addEventListener("click", function () {
@@ -89,6 +90,7 @@ for (let i = 0; i < thumbSelectorNode.length; i++) {
         thumbSelectorNode[i].classList.add("thumb-active");
         thumbSelectorNode[i].classList.remove("blacked");
         itemsNode[i].classList.add("active");
+        currentImage = i;
         for (let counter = 0; counter < thumbSelectorNode.length; counter++) {
             if (counter != i) {
                 thumbSelectorNode[counter].classList.add("blacked");
