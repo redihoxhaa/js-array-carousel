@@ -89,13 +89,13 @@ for (let i = 0; i < thumbSelectorNode.length; i++) {
         thumbSelectorNode[i].classList.add("thumb-active");
         thumbSelectorNode[i].classList.remove("blacked");
         itemsNode[i].classList.add("active");
-        for (counter = 0; counter < thumbSelectorNode.length; counter++) {
+        for (let counter = 0; counter < thumbSelectorNode.length; counter++) {
             if (counter != i) {
                 thumbSelectorNode[counter].classList.add("blacked");
-                itemsNode[i].classList.remove("active");
+                thumbSelectorNode[counter].classList.remove("thumb-active");
+                itemsNode[counter].classList.remove("active");
             }
         }
     })
-
 
 }
